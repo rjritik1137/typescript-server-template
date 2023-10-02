@@ -1,4 +1,5 @@
 const { app } = require('../app')
+const { jobs } = require('../jobs')
 const { validation } = require('../jobs/utils')
 const shortPolling = () => {
     app.get('/poll', validation, (req, res) => {

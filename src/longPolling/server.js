@@ -1,4 +1,5 @@
 const { app } = require('../app')
+const { jobs } = require('../jobs')
 
 const longPolling = () => {
     app.get('/longPoll', (req, res) => {
