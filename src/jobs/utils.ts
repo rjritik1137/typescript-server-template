@@ -23,11 +23,6 @@ const validation: RequestHandler = (req, res, next) => {
     next()
 }
 
-const status: RequestHandler = (req, res) => {
-    const jobId = req.query.jobId
-    res.send({ progress: result[jobId as string].data })
-}
-
 function executeJob(jobId: string) {
     result[jobId] = { status: 'PENDING', data: 0 }
     const id = setInterval(() => {
@@ -39,4 +34,4 @@ function executeJob(jobId: string) {
     }, 1000)
 }
 
-export { submit, validation, status }
+export { submit, validation }
