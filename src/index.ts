@@ -1,6 +1,6 @@
-const { app } = require('./app')
-const shortPolling = require('./shortPolling/index')
-const { submit } = require('./jobs/utils')
+import { app } from './app'
+import shortPolling from './shortPolling/index'
+import { submit } from './jobs/utils'
 shortPolling()
 app.post('/submit', submit)
 const PORT = 4000
