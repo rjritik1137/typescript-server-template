@@ -1,7 +1,7 @@
 const { app } = require('../app')
-const { validation } = require('../jobs/utils')
-const shortPolling = () => {
-    app.get('/poll', validation, (req, res) => {
+
+const longPolling = () => {
+    app.get('/longPoll', (req, res) => {
         status(req, res)
     })
     setInterval(() => {
@@ -19,4 +19,4 @@ function status(req, res) {
     res.send({ progress: jobs[jobId] })
 }
 
-module.exports = { shortPolling }
+module.exports = { longPolling }
