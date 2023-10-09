@@ -1,7 +1,7 @@
-import { app } from '../app'
+import { Application } from 'express'
 import { longPolling } from './server'
-const setupLongPolling = () => {
-    longPolling()
+const setUpLongPolling = (app: Application) => {
+    longPolling(app)
 }
 
-export default setupLongPolling
+export default setUpLongPolling

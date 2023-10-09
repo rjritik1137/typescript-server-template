@@ -1,13 +1,14 @@
 import { RequestHandler } from 'express'
-import { jobs, result } from './index'
+import { result } from './index'
 
 const isValid = (jobId: any) => {
-    return typeof jobId !== 'string' || !(jobId in jobs)
+    console.log(typeof jobId, jobId, result)
+    return typeof jobId !== 'string' || !(jobId in result)
 }
 const submit: RequestHandler = (req, res) => {
     let jobId = new Date().getTime().toString()
 
-    while (jobId in jobs) {
+    while (jobId in result) {
         jobId += 1
     }
     executeJob(jobId)
@@ -26,7 +27,7 @@ const validation: RequestHandler = (req, res, next) => {
 function executeJob(jobId: string) {
     result[jobId] = { status: 'PENDING', data: 0 }
     const id = setInterval(() => {
-        result[jobId].data += Math.random() * 10
+        result[jobId].data += Math.random() * 7
         if (result[jobId].data > 100) {
             result[jobId].status = 'DONE'
             clearInterval(id)

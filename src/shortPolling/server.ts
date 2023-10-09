@@ -1,15 +1,14 @@
-import { RequestHandler } from 'express'
-import { app } from '../app'
+import { Application, RequestHandler } from 'express'
 import { result } from '../jobs'
 import { validation } from '../jobs/utils'
 
-const shortPolling = () => {
+const shortPolling = (app: Application) => {
     app.get('/poll', validation, status)
 }
 
 const status: RequestHandler = (req, res) => {
     const jobId = req.query.jobId
-    res.send({ progress: result[jobId as string].data })
+    res.send({ body: result[jobId as string] })
 }
 
 export { shortPolling }

@@ -1,7 +1,7 @@
-import { app } from '../app'
+import { Application } from 'express'
 import { shortPolling } from './server'
-const setUpShortPolling = () => {
-    shortPolling()
+const setUpShortPolling = (app: Application) => {
+    shortPolling(app)
 }
 
 export default setUpShortPolling
